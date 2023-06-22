@@ -9,7 +9,20 @@ enum sofle_layers {
     _RAISE,
 };
 
-enum custom_keycodes { KC_QWERTY = SAFE_RANGE, KC_COLEMAK, KC_PRVWD, KC_NXTWD, KC_LSTRT, KC_LEND, KC_DLINE };
+
+// Left-hand home row mods
+#define HOME_A LGUI_T(KC_A)
+#define HOME_R LALT_T(KC_R)
+#define HOME_S LSFT_T(KC_S)
+#define HOME_T LCTL_T(KC_T)
+
+// Right-hand home row mods
+#define HOME_N RCTL_T(KC_N)
+#define HOME_E RSFT_T(KC_E)
+#define HOME_I LALT_T(KC_I)
+#define HOME_O RGUI_T(KC_O)
+
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -19,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * | TAB  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   '  | Bspc |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * | LCTL |LGUI_T(A)|LALT_T(R)|LCTL_T(S)|LSFT_T(T)|G |    | M |RSFT_T(N)|RCTL_T(E)|RALT_T(I)|RGUI_T(O)|  ;  |
+     * | LCTL |HOME_A|HOME_R|HOME_S|HOME_T|  G   |                    |   M  |HOME_N|HOME_E|HOME_I|HOME_O|  ;  |
      * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
      * |LShift|   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   ,  |   .  |   /  | ESC  |
      * `-----------------------------------------/        /     \      \-----------------------------------------'
@@ -29,7 +42,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *            `----------------------------------'            '------''---------------------------'
      */
 
-    [_COLEMAK] = LAYOUT(XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_QUOT, KC_BSPC, KC_LCTL, LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S), LSFT_T(KC_T), KC_G, KC_M, RSFT_T(KC_N), RCTL_T(KC_E), RALT_T(KC_I), RGUI_T(KC_O), KC_SCLN, KC_LSFT, KC_Z, KC_X, KC_C, KC_D, KC_V, KC_MUTE, XXXXXXX, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, KC_ESC, XXXXXXX, XXXXXXX, KC_LGUI, XXXXXXX, LT(_LOWER, KC_ENT), KC_SPC, MO(_RAISE), XXXXXXX, XXXXXXX, XXXXXXX),
+    [_COLEMAK] = LAYOUT(XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            KC_TAB, KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_QUOT, KC_BSPC, 
+            KC_LCTL, HOME_A, HOME_R, HOME_S, HOME_T, KC_G, KC_M, HOME_N, HOME_E, HOME_I, HOME_O, KC_SCLN,
+            KC_LSFT, KC_Z, KC_X, KC_C, KC_D, KC_V, KC_MUTE, XXXXXXX, KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, KC_ESC,
+            XXXXXXX, XXXXXXX, KC_LGUI, XXXXXXX, LT(_LOWER, KC_ENT), KC_SPC, MO(_RAISE), XXXXXXX, XXXXXXX, XXXXXXX),
     /* LOWER
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
