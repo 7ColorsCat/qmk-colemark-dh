@@ -9,6 +9,11 @@ enum sofle_layers {
   _RAISE,
   _FNS,
 };
+enum combos {
+  WF_TAB,
+  UY_DEL,
+  GM_CAP,
+};
 
 // Left-hand home row mods
 #define HOME_A LGUI_T(KC_A)
@@ -21,6 +26,15 @@ enum sofle_layers {
 #define HOME_E RSFT_T(KC_E)
 #define HOME_I LALT_T(KC_I)
 #define HOME_O RGUI_T(KC_O)
+
+const uint16_t PROGMEM wf_combo[] = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM uy_combo[] = {KC_U, KC_Y, COMBO_END};
+const uint16_t PROGMEM gm_combo[] = {KC_G, KC_M, COMBO_END};
+combo_t key_combos[] = {
+  [WF_TAB] = COMBO(wf_combo, KC_TAB),
+  [UY_DEL] = COMBO(uy_combo, KC_DEL),
+  [GM_CAP] = COMBO(gm_combo, KC_CAPS),
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -121,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, KC_EXLM, KC_AT, KC_HASH,
         KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
-        _______, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR, KC_CAPS, KC_MINS, KC_EQL,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX, KC_PSCR,  KC_MINS, KC_EQL,
         KC_LBRC, KC_RBRC, KC_BSLS, KC_GRV, _______, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR,
         KC_PIPE, KC_TILD, _______, _______, _______, _______, _______, _______,
